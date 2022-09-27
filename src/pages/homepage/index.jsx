@@ -1,7 +1,13 @@
 import React from 'react';
 import "./styles.scss";
+import { useNavigate } from "react-router-dom"
+
 
 export default function Homepage() {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/map-random");
+  }
   return (
     <div className='homepage'>
         <div className='header'>
@@ -9,6 +15,7 @@ export default function Homepage() {
         <div className='header-text'>
             <h1 className='header-h1'>¿Quieres hacer un viaje al azar por el mundo? ¡¡Dejate sorprender!!</h1>
             <h3 className='header-h3'>bhvuguegui  cgwueg ckugwqkudfgkuw eghfcjuwgecgv </h3>
+            <button onClick={ handleClick }>Click me!</button>
         </div>
         </div>
     </div>
