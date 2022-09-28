@@ -14,7 +14,7 @@ jobs:
 
       - name: deploy to Vercel
 #        id: branch_deploy_vercel
-        run: npx vercel --confirm -n ${{ secrets.PROJECT_ID }} -t {{ secrets.TRIPS_APP_FRONT_TOKEN }} --scope ${{ secrets.ORG_ID }} -e REACT_APP_API_URL=${{ secrets.API_URL_STAGING }} -b REACT_APP_API_URL=${{ secrets.API_URL_STAGING }} 
+        run: npx vercel --confirm -n ${{ secrets.PROJECT_ID }} -t ${{ secrets.TRIPS_APP_FRONT_TOKEN }} --scope ${{ secrets.ORG_ID }} -e REACT_APP_API_URL=${{ secrets.API_URL_STAGING }} -b REACT_APP_API_URL=${{ secrets.API_URL_STAGING }} 
       
 
 
