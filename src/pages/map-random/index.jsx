@@ -1,6 +1,8 @@
 import React from 'react';
 import { useGetter } from 'store';
 import { useEffect } from 'react';
+import Leaflet from 'components/leaflet';
+import "./styles.scss";
 
 function MapRandom() {
     const {map, setMap} = useGetter();
@@ -9,8 +11,11 @@ function MapRandom() {
     },[])
     console.log(map)
   return (
-    <div>MapRandom</div>
-  )
+    <div id="Map">
+      <Leaflet coordinates={ map.coordinates }/>
+    </div>  
+    // aqui cargo información de vuelos dentro de map  
+    )
 }
 
-export default MapRandom
+export default MapRandom;
