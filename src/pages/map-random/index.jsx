@@ -9,7 +9,7 @@ function MapRandom() {
     useEffect(() => {
         setMap()
     },[])
-    console.log(map)
+    //console.log(map)
   return (
     <div id="Map">
       <Leaflet coordinates={ map.coordinates }/>
