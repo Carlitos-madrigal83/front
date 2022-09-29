@@ -1,29 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer } from "react-leaflet";
-import "./styles.scss";
-
+import React, { useEffect } from 'react';
+import { MapContainer, TileLayer } from 'react-leaflet';
+import './styles.scss';
 
 export default function Leaflet({ coordinates }) {
-  const [coordinatesArr, setCoordinatesArr] = useState();
+  const paintMap = () => {
+    if (!coordinates) {
+      return <p>Cargando...</p>;
+    } else {
+      const coordArr = coordinates.split(', ').map(coord => Number(coord));
+
+      return (
+        <MapContainer center={coordArr} zoom={5}>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          />
+        </MapContainer>
+      );
+    }
+  };
+
   useEffect(() => {
-    const arrCoordinates = () => {
-      const arr = coordinates && coordinates.split(', ').map(x => Number(x))
-      setCoordinatesArr(arr)  
-  }
-  arrCoordinates()
+    paintMap();
+  }, [coordinates]);
 
-  },[])
-  console.log(coordinatesArr)
-  return (
-    <div>
-        <p>{coordinates}</p>
-    <MapContainer center={coordinatesArr} zoom={12}>
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      />
-    </MapContainer>
-    </div>
-  );
+  return <div>{paintMap()}</div>;
 }
-
